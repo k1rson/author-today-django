@@ -5,5 +5,89 @@
 {% block title %}Книги и аудиокниги онлайн!{% endblock title %}
 
 {% block content %}
+<section class="border border-bottom" style="background-color: rgb(238, 243, 251);">
+    <div class="container-fluid mt-3 mb-3" style="max-width: 130vh;">
 
+        <!-- ========== First Section ========== -->
+        <div class="row justify-content-start align-items-start">
+            <div class="col-9">
+                <div class="container shadow bg-light">
+                    <div class="row justify-content-center align-items-center g-2">
+                        <div class="col-2">
+                            <a href="" class="h6 text-dark" style="text-decoration: none;">Любимые жанры</a>
+                        </div>
+                        <div class="col-2">
+                            <a href="" class="h6 text-dark" style="text-decoration: none;">Все жанры</a>
+                        </div>
+                        <div class="col align-content-end text-end">
+                            <button class="btn btn-sm ms-auto mb-2 custom-border">
+                              <img src="{% static 'image/icon-like.svg' %}" width="15px" class="mb-1">
+                              <img src="{% static 'image/icon-dislike.svg' %}" width="15px">
+                              Настроить мои предпочтения
+                            </button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="container shadow bg-light">
+                    <div class="row justify-content-start align-items-start">
+                        <div class="col text-center">
+                            <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/icon-books.svg' %}" width="20px"> Продолжить чтение</a>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col">
+                            <div class="container">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col-6">КАРУСУЛЬКА</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== Second Section ========== -->
+        <div class="row justify-content-center align-items-center mt-3 mb-3">
+            <div class="col-9">
+                <div class="container shadow bg-light">
+                    <div class="row justify-content-center align-items-center g-2">
+                        <div class="row">
+                            <div class="col-9">
+                                <a href="" class="h5 text-dark" style="text-decoration: none;">Популярное</a>
+                                <p href="" class="fs-6 text-dark" style="text-decoration: none;">Самые популярные книги за сегодня. Список обновляется каждый час</p>
+                            </div>
+                            <div class="col-3 align-content-end text-end mt-4">
+                                <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">КНИГИ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="container shadow bg-light">
+                    <div class="row justify-content-start align-items-start">
+                        <div class="col text-center">
+                            <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/discount.svg' %}" width="20px"> Скидки</a>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col">
+                            <div class="container">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col-6">КАРУСУЛЬКА</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
