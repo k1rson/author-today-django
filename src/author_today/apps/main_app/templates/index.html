@@ -7,80 +7,275 @@
 {% block content %}
 <section class="border border-bottom" style="background-color: rgb(238, 243, 251);">
     <div class="container-fluid mt-3 mb-3" style="max-width: 130vh;">
-
-        <!-- ========== First Section ========== -->
-        <div class="row justify-content-start align-items-start">
+        <div class="row justify-content-center g-2">
+            <!-- ========== Left Side ========== -->
             <div class="col-9">
-                <div class="container shadow bg-light">
-                    <div class="row justify-content-center align-items-center g-2">
-                        <div class="col-2">
-                            <a href="" class="h6 text-dark" style="text-decoration: none;">Любимые жанры</a>
-                        </div>
-                        <div class="col-2">
-                            <a href="" class="h6 text-dark" style="text-decoration: none;">Все жанры</a>
-                        </div>
-                        <div class="col align-content-end text-end">
-                            <button class="btn btn-sm ms-auto mb-2 custom-border">
-                              <img src="{% static 'image/icon-like.svg' %}" width="15px" class="mb-1">
-                              <img src="{% static 'image/icon-dislike.svg' %}" width="15px">
-                              Настроить мои предпочтения
-                            </button>
-                          </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="container shadow bg-light">
-                    <div class="row justify-content-start align-items-start">
-                        <div class="col text-center">
-                            <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/icon-books.svg' %}" width="20px"> Продолжить чтение</a>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col">
-                            <div class="container">
-                                <div class="row justify-content-center align-items-center">
-                                    <div class="col-6">КАРУСУЛЬКА</div>
+                {% if user.is_authenticated %}
+                <!-- ========== First Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-center align-items-center g-2">
+                                <div class="col-12 col-md-2 mb-2">
+                                    <a href="" class="h6 text-dark" style="text-decoration: none;">Любимые жанры</a>
+                                </div>
+                                <div class="col-12 col-md-2 mb-2">
+                                    <a href="" class="h6 text-dark" style="text-decoration: none;">Все жанры</a>
+                                </div>
+                                <div class="col align-content-end text-end">
+                                    <button class="btn btn-sm ms-auto mb-2 custom-border">
+                                        <img src="{% static 'image/icon-like.svg' %}" width="15px" class="mb-1">
+                                        <img src="{% static 'image/icon-dislike.svg' %}" width="15px">
+                                        Настроить мои предпочтения
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- ========== Second Section ========== -->
-        <div class="row justify-content-center align-items-center mt-3 mb-3">
-            <div class="col-9">
-                <div class="container shadow bg-light">
-                    <div class="row justify-content-center align-items-center g-2">
-                        <div class="row">
-                            <div class="col-9">
-                                <a href="" class="h5 text-dark" style="text-decoration: none;">Популярное</a>
-                                <p href="" class="fs-6 text-dark" style="text-decoration: none;">Самые популярные книги за сегодня. Список обновляется каждый час</p>
+                {% endif %}
+                <!-- ========== Second Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-center">
+                                <div class="col-9">
+                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Популярное</a>
+                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Самые популярные книги за сегодня. Список обновляется каждый час</p>
+                                </div>
+                                <div class="col-3 align-content-end text-end mt-4">
+                                    <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
+                                </div>
                             </div>
-                            <div class="col-3 align-content-end text-end mt-4">
-                                <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
+                            <div class="row justify-content-start align-items-center">
+                                ЗДЕСЬ БУДУТ КНИГИ
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">КНИГИ</div>
+                    </div>
+                </div>
+                <!-- ========== Third Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-center">
+                                <div class="col-9">
+                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Горячие новинки</a>
+                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Популярные новинки за последние две недели</p>
+                                </div>
+                                <div class="col-3 align-content-end text-end mt-4">
+                                    <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start align-items-center">
+                                ЗДЕСЬ БУДУТ КНИГИ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Fourth Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-center">
+                                <div class="col-9">
+                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Последние обновления</a>
+                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Новые главы и фрагменты книг. Авторы выкладывают продолжение по мере написания</p>
+                                </div>
+                                <div class="col-3 align-content-end text-end mt-4">
+                                    <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start align-items-center">
+                                ЗДЕСЬ БУДУТ КНИГИ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Fifth Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-center">
+                                <div class="col-9">
+                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Бестселлеры</a>
+                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Самые популярные книги по подписке</p>
+                                </div>
+                                <div class="col-3 align-content-end text-end mt-4">
+                                    <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start align-items-center">
+                                ЗДЕСЬ БУДУТ КНИГИ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Sixth Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            КРАСИВАЯ КАРТОЧКА
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Seventh Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-center">
+                                <div class="col-9">
+                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Вы интересовались</a>
+                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Книги, которые вы недавно просматривали, но так и не добавили в библиотеку</p>
+                                </div>
+                                <div class="col-3 align-content-end text-end mt-4">
+                                    <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start align-items-center">
+                                ЗДЕСЬ БУДУТ КНИГИ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Eight Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-center">
+                                <div class="col-9">
+                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Новые поступления</a>
+                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Только что опубликованные произведения</p>
+                                </div>
+                                <div class="col-3 align-content-end text-end mt-4">
+                                    <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start align-items-center">
+                                ЗДЕСЬ БУДУТ КНИГИ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Ninth Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-center">
+                                <div class="col-9">
+                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Что сейчас читают</a>
+                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Книги, которые были добавлены в библиотеку</p>
+                                </div>
+                                <div class="col-3 align-content-end text-end mt-4">
+                                    <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start align-items-center">
+                                ЗДЕСЬ БУДУТ КНИГИ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Tenth Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-center">
+                                <div class="col-9">
+                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Читателям нравится</a>
+                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Произведения, которым поставили лайк <img src="{% static 'image/like-heart.svg' %}" width="22px"></p>
+                                </div>
+                                <div class="col-3 align-content-end text-end mt-4">
+                                    <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start align-items-center">
+                                ЗДЕСЬ БУДУТ КНИГИ
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="container shadow bg-light">
-                    <div class="row justify-content-start align-items-start">
-                        <div class="col text-center">
-                            <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/discount.svg' %}" width="20px"> Скидки</a>
+            <!-- ========== Right Side ========== -->
+            <div class="col-3 mt-0">
+                <!-- ========== First Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-start">
+                                <div class="col text-center">
+                                    <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/icon-books.svg' %}" width="20px"> Продолжить чтение</a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col">
+                                    <div class="container">
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-6">КАРУСУЛЬКА</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col">
-                            <div class="container">
-                                <div class="row justify-content-center align-items-center">
-                                    <div class="col-6">КАРУСУЛЬКА</div>
+                </div>
+                <!-- ========== Second Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-start">
+                                <div class="col text-center">
+                                    <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/discount.svg' %}" width="20px"> Скидки</a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col">
+                                    <div class="container">
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-6">КАРУСУЛЬКА</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Third Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-start">
+                                <div class="col text-center">
+                                    <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/comment.svg' %}" width="20px"> Последние комментарии</a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col">
+                                    <div class="container">
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-6">комменты</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Fourth Section ========== -->
+                <div class="row justify-content-start align-items-start mb-3">
+                    <div class="col">
+                        <div class="container shadow bg-light">
+                            <div class="row justify-content-start align-items-start">
+                                <div class="col text-center">
+                                    <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/icon.svg' %}" width="20px"> Самые ярые любители книг</a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col">
+                                    <div class="container">
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-6">пользователи</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
