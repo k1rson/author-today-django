@@ -40,15 +40,19 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-center">
                                 <div class="col-9">
-                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Популярное</a>
-                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Самые популярные книги за сегодня. Список обновляется каждый час</p>
+                                    <div class="h5 text-dark mt-1 d-flex align-items-center">
+                                        <img src="{% static 'gif/ok-animated.gif' %}" width="20px" class="mr-2 me-1">
+                                        <span>Популярное</span>
+                                      </div>
+                                    <p class="fs-6 text-muted">Самые популярные книги за сегодня. Список обновляется каждый час</p>
                                 </div>
                                 <div class="col-3 align-content-end text-end mt-4">
                                     <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
                                 </div>
                             </div>
                             <div class="row justify-content-start align-items-center">
-                                ЗДЕСЬ БУДУТ КНИГИ
+                                <div id="popularBooksPanel">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -59,8 +63,11 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-center">
                                 <div class="col-9">
-                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Горячие новинки</a>
-                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Популярные новинки за последние две недели</p>
+                                    <div class="h5 text-dark mt-1 d-flex align-items-center">
+                                        <img src="{% static 'gif/fire-animated.gif' %}" width="20px" class="mr-2 me-1"> 
+                                        <span>Горячие новинки</span>
+                                      </div>
+                                    <p href="" class="fs-6 text-muted">Популярные новинки за последние две недели</p>
                                 </div>
                                 <div class="col-3 align-content-end text-end mt-4">
                                     <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
@@ -78,8 +85,13 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-center">
                                 <div class="col-9">
-                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Последние обновления</a>
-                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Новые главы и фрагменты книг. Авторы выкладывают продолжение по мере написания</p>
+                                    <div class="col-9">
+                                        <div class="h5 text-dark mt-1 d-flex align-items-center">
+                                            <img src="{% static 'gif/refresh-animated.gif' %}" width="20px" class="mr-2 me-1"> 
+                                            <span>Последние обновления</span>
+                                        </div>
+                                    </div>
+                                    <p href="" class="fs-6 text-muted">Новые главы и фрагменты книг. Авторы выкладывают продолжение по мере написания</p>
                                 </div>
                                 <div class="col-3 align-content-end text-end mt-4">
                                     <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
@@ -97,8 +109,11 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-center">
                                 <div class="col-9">
-                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Бестселлеры</a>
-                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Самые популярные книги по подписке</p>
+                                    <div class="h5 text-dark mt-1 d-flex align-items-center">
+                                        <img src="{% static 'gif/fire-animated.gif' %}" width="20px" class="mr-2 me-1"> 
+                                        <span>Бестселлеры</span>
+                                    </div>
+                                    <p href="" class="fs-6 text-muted">Самые популярные книги по подписке</p>
                                 </div>
                                 <div class="col-3 align-content-end text-end mt-4">
                                     <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
@@ -124,8 +139,11 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-center">
                                 <div class="col-9">
-                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Вы интересовались</a>
-                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Книги, которые вы недавно просматривали, но так и не добавили в библиотеку</p>
+                                    <div class="h5 text-dark mt-1 d-flex align-items-center">
+                                        <img src="{% static 'gif/search-animated.gif' %}" width="20px" class="mr-2 me-1"> 
+                                        <span>Вы интересовались</span>
+                                    </div>
+                                    <p href="" class="fs-6 text-muted">Книги, которые вы недавно просматривали, но так и не добавили в библиотеку</p>
                                 </div>
                                 <div class="col-3 align-content-end text-end mt-4">
                                     <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
@@ -143,8 +161,11 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-center">
                                 <div class="col-9">
-                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Новые поступления</a>
-                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Только что опубликованные произведения</p>
+                                    <div class="h5 text-dark mt-1 d-flex align-items-center">
+                                        <img src="{% static 'gif/fire-animated.gif' %}" width="20px" class="mr-2 me-1"> 
+                                        <span>Новые поступления</span>
+                                    </div>
+                                    <p href="" class="fs-6 text-muted">Только что опубликованные произведения</p>
                                 </div>
                                 <div class="col-3 align-content-end text-end mt-4">
                                     <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
@@ -162,8 +183,11 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-center">
                                 <div class="col-9">
-                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Что сейчас читают</a>
-                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Книги, которые были добавлены в библиотеку</p>
+                                    <div class="h5 text-dark mt-1 d-flex align-items-center">
+                                        <img src="{% static 'gif/star-animated.gif' %}" width="20px" class="mr-2 me-1"> 
+                                        <span>Что сейчас читают</span>
+                                    </div>
+                                    <p href="" class="fs-6 text-muted">Книги, которые были добавлены в библиотеку</p>
                                 </div>
                                 <div class="col-3 align-content-end text-end mt-4">
                                     <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
@@ -181,8 +205,11 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-center">
                                 <div class="col-9">
-                                    <a href="" class="h5 text-dark" style="text-decoration: none;"><img src="{% static 'image/fire.svg' %}" width="25px" class="">Читателям нравится</a>
-                                    <p href="" class="fs-6 text-dark" style="text-decoration: none;">Произведения, которым поставили лайк <img src="{% static 'image/like-heart.svg' %}" width="22px"></p>
+                                    <div class="h5 text-dark mt-1 d-flex align-items-center">
+                                        <img src="{% static 'gif/heart-animated.gif' %}" width="20px" class="mr-2 me-1"> 
+                                        <span>Читателям нравится</span>
+                                    </div>
+                                    <p href="" class="fs-6 text-muted">Произведения, которым поставили <img src="{% static 'gif/like-animated.gif' %}" width="20px"></p>
                                 </div>
                                 <div class="col-3 align-content-end text-end mt-4">
                                     <a href="" class="" style="color: rgb(87, 168, 229);text-decoration: none;">показать все ></a>
@@ -203,7 +230,10 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-start">
                                 <div class="col text-center">
-                                    <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/icon-books.svg' %}" width="20px"> Продолжить чтение</a>
+                                    <div class="h6 text-dark mt-1 d-flex align-items-center justify-content-center">
+                                      <img src="{% static 'gif/book-animated.gif' %}" width="20px" class="mr-2 me-1" style="display: inline-block; vertical-align: middle;">
+                                      <span style="display: inline-block; vertical-align: middle;">Продолжить чтение</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center align-items-center">
@@ -224,7 +254,10 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-start">
                                 <div class="col text-center">
-                                    <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/discount.svg' %}" width="20px"> Скидки</a>
+                                    <div class="h6 text-dark mt-1 d-flex align-items-center justify-content-center">
+                                      <img src="{% static 'gif/discount-animated.gif' %}" width="20px" class="mr-2 me-1" style="display: inline-block; vertical-align: middle;">
+                                      <span style="display: inline-block; vertical-align: middle;">Скидки</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center align-items-center">
@@ -245,7 +278,10 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-start">
                                 <div class="col text-center">
-                                    <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/comment.svg' %}" width="20px"> Последние комментарии</a>
+                                    <div class="h6 text-dark mt-1 d-flex align-items-center justify-content-center">
+                                      <img src="{% static 'gif/comment-animated.gif' %}" width="20px" class="mr-2 me-1" style="display: inline-block; vertical-align: middle;">
+                                      <span style="display: inline-block; vertical-align: middle;">Последние комментарии</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center align-items-center">
@@ -266,7 +302,10 @@
                         <div class="container shadow bg-light">
                             <div class="row justify-content-start align-items-start">
                                 <div class="col text-center">
-                                    <a href="" class="h6 text-dark" style="text-decoration: none;"><img src="{% static 'image/icon.svg' %}" width="20px"> Самые ярые любители книг</a>
+                                    <div class="h6 text-dark mt-1 d-flex align-items-center justify-content-center">
+                                      <img src="{% static 'gif/star-animated.gif' %}" width="20px" class="mr-2 me-1" style="display: inline-block; vertical-align: middle;">
+                                      <span style="display: inline-block; vertical-align: middle;">Самые ярые любители книг</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center align-items-center">
