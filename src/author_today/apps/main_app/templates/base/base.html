@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}">
 
     <!-- ========== Slick ========== -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <link rel="stylesheet" href="{% static 'base/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/slick-theme.css' %}">
 
     <!-- ========== Custom ========== -->
     <link rel="icon" href="{% static 'image/icon_for_all_pages.ico' %}" type="image/x-icon">
@@ -154,9 +154,9 @@
         <div class="col-6 col-md-2 mb-3">
           <h5>Иные приложения</h5>
           <ul class="nav flex-column">
-            <li onclick="OpenModalNotCompletedElement()" class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark"><img src="{% static 'image/icon-desktop.svg' %}" width="25px"> Приложение для ПК</a></li>
-            <li onclick="OpenModalNotCompletedElement()" class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark"><img src="{% static 'image/icon-playmarket.svg' %}" width="22px"> Приложение для Android</a></li>
-            <li onclick="OpenModalNotCompletedElement()" class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark"><img src="{% static 'image/icon-appstore.svg' %}" width="25px"> Приложение для IOS</a></li>
+            <li onclick="OpenModalNotCompletedElement()" class="no-select-a nav-item mb-2"><a class="nav-link p-0 text-dark"><img src="{% static 'image/icon-desktop.svg' %}" width="25px"> Приложение для ПК</a></li>
+            <li onclick="OpenModalNotCompletedElement()" class="no-select-a nav-item mb-2"><a class="nav-link p-0 text-dark"><img src="{% static 'image/icon-playmarket.svg' %}" width="22px"> Приложение для Android</a></li>
+            <li onclick="OpenModalNotCompletedElement()" class="no-select-a nav-item mb-2"><a class="nav-link p-0 text-dark"><img src="{% static 'image/icon-appstore.svg' %}" width="25px"> Приложение для IOS</a></li>
           </ul>
         </div>
   
@@ -172,20 +172,15 @@
         </div>
       </div>
   
-      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 border-top">
         <p>&copy; 2023 AuthorToday, Inc. Все права защищены.</p>
-        <ul class="list-unstyled d-flex">
-          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
-          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-        </ul>
       </div>
   </footer>
 </div>
-    <!-- ========== Bootstrap & JQuery|Ajax ========== -->
+    <!-- ========== Bootstrap & JQuery|Ajax | Slick ========== -->
     <script src="{% static 'base/js/jquery.min.js' %}"></script>
     <script src="{% static 'base/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="{% static 'base/js/slick.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/ajax.js' %}"></script>
 </body>

@@ -1,4 +1,4 @@
-// DOM elements/any functions on DOM elements
+// DOM handler
 $('.dropdown-hover').hover(function() {
     $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(200);
     
@@ -24,34 +24,80 @@ function OpenModalNotCompletedElement() {
          <h5 class="modal-title centered-modal-title">Ошибка перехода</h5>
         </div>
         <div class="modal-body">
-            <p>К сожалению, пока что не сделали :(</p>
+            <p>Находится в разработке</p>
         </div>
         </div>
     </div>
     `;
 
-    document.body.appendChild(modal);
+    document.body.append(modal);
 
     $('#modalnotcompletedelement').modal('show');
 }
 
+function CreateDashboardCard(){
+    let dashboard_card = $('#dashboardCard');
+
+    
+}
+
 function CreateBookPanels(popular_books, new_hot_books, updated_books, bestseller_books, last_check_books, new_books, popular_now_books, most_likes_books) {
     let popular_books_panel = $('#popularBooksPanel');
-    popular_books_panel.empty();
+    let new_hot_books_panel = $('#newHotBooksPanel');
+    let updated_books_panel = $('#updatedBooksPanel');
+    let bestseller_books_panel = $('#bestsellerBooksPanel');
+    let last_check_books_panel = $('#lastCheckBooksPanel');
+    let new_books_panel = $('#newBooksPanel');
+    let popular_now_books_panel = $('#popularNewBooksPanel');
+    let most_likes_books_panel = $('#mostLikesBooksPanel');
 
+    let wrapper_popular = CreateBooksCard(popular_books)
+    popular_books_panel.append(wrapper_popular)
+    SettingSlick(wrapper_popular)
+
+    let wrapper_new_hot = CreateBooksCard(new_hot_books)
+    new_hot_books_panel.append(wrapper_new_hot)
+    SettingSlick(wrapper_new_hot)
+
+    let wrapper_update = CreateBooksCard(updated_books)
+    updated_books_panel.append(wrapper_update)
+    SettingSlick(wrapper_update)
+
+    let wrapper_bestseller = CreateBooksCard(bestseller_books)
+    bestseller_books_panel.append(wrapper_bestseller)
+    SettingSlick(wrapper_bestseller)
+
+    let wrapper_last_check = CreateBooksCard(last_check_books)
+    last_check_books_panel.append(wrapper_last_check)
+    SettingSlick(wrapper_last_check)
+
+    let wrapper_new_books = CreateBooksCard(new_books)
+    new_books_panel.append(wrapper_new_books)
+    SettingSlick(wrapper_new_books)
+
+    let wrapper_popular_now = CreateBooksCard(popular_now_books)
+    popular_now_books_panel.append(wrapper_popular_now)
+    SettingSlick(wrapper_popular_now)
+
+    let wrapper_most_likes= CreateBooksCard(most_likes_books)
+    most_likes_books_panel.append(wrapper_most_likes)
+    SettingSlick(wrapper_most_likes)
+}
+
+function CreateBooksCard(list_books){
     let bookCardsWrapper = $('<div>').addClass('book-cards-wrapper');
 
-    popular_books.forEach(element => {
+    list_books.forEach(element => {
         let bookCard = $('<div>').addClass('book-card').html(`
             <div class="book-card mb-3">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-10">
-                        <img src="${'media/' + element.avatar}" style="max-width: 105px;">
+                        <a href="${element.id}"><img src="${'media/' + element.avatar}" style="max-width: 85px;"></a>
                     </div>
                 </div>
                 <div class="row justify-content-center align-items-center text-center">
                     <p class="bookcard-footer">${element.name}</p>
-                    <p class="bookcard-footer">${element.author}</p>
+                    <p class="bookcard-footer text-muted">${element.author}</p>
                 </div>
             </div>
         `);
@@ -59,9 +105,11 @@ function CreateBookPanels(popular_books, new_hot_books, updated_books, bestselle
         bookCardsWrapper.append(bookCard);
     });
 
-    popular_books_panel.append(bookCardsWrapper);
+    return bookCardsWrapper
+}
 
-    bookCardsWrapper.slick({
+function SettingSlick(book_panel_wrapper){
+    book_panel_wrapper.slick({
         infinite: true,
         speed: 500,
         slidesToShow: 7,

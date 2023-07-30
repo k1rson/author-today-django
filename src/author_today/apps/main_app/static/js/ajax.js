@@ -31,7 +31,7 @@ function GetBooks() {
       type: 'GET',
       dataType: 'json',
       success: function(data) {
-        CreateBookPanels(data.books_list)
+        CreateBookPanels(data.books_list, data.books_list, data.books_list, data.books_list, data.books_list, data.books_list, data.books_list, data.books_list)
       },
       error: function(xhr, status, error) {
         console.error('Произошла ошибка: ' + error);

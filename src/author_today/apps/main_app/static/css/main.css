@@ -7,7 +7,7 @@
 }
 
 .book-card{
-    width: 127px;
+    width: 115px;
     height: 220px;
 }
 
@@ -21,6 +21,7 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    margin-bottom: 20px;
     -ms-overflow-style: none; 
     scrollbar-width: none; 
 }
@@ -31,6 +32,10 @@
   
 .parent-element {
     overflow: hidden;
+}
+
+.no-select-a {
+    user-select: none;
 }
 
   
