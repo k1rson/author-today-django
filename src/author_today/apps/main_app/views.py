@@ -5,11 +5,13 @@ from django.shortcuts import render
 
 from .models import BookModel
 
+from ..profile_app.models import User
+
 class HomePageView(View):
     def get(self, request):
         return render(request, 'index.html')
     
-# AJAX function
+# AJAX functions    
 def get_books(request):
     books = BookModel.objects.all()
     books_list = list(books.values())

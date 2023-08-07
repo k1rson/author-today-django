@@ -17,7 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'djmoney',
     'apps.main_app.apps.MainAppConfig', 
-    'apps.profile_app.apps.ProfileAppConfig'
+    'apps.profile_app.apps.ProfileAppConfig',
+    'apps.authentication_app.apps.AuthenticationAppConfig',
 ]
 
 MIDDLEWARE = [
