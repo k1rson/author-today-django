@@ -24,7 +24,7 @@
   <!-- ========== Header ========== -->
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(228, 143, 19);">
       <div class="container-fluid" style="max-width: 130vh;">
-        <img src="{% static 'image/icon.svg' %}" width="40px">
+        <a href="/"><img src="{% static 'image/icon.svg' %}" width="40px"></a>
         
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav me-auto">
@@ -90,9 +90,9 @@
                 <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/top-authors.svg' %}" width="20px"> Подборки</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-profile.svg' %}" width="20px"> Мой профиль</a></li>
-                <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-settings.svg' %}" width="20px"> Личный кабинет</a></li>
+                <li><a class="dropdown-item" href="{% url 'profile' %}"> <img class="mb-1" src="{% static 'image/icon-settings.svg' %}" width="20px"> Личный кабинет</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-exit.svg' %}" width="20px"> Выйти</a></li>
+                <li><a class="dropdown-item" href="{% url 'logout_user' %}"><img class="mb-1" src="{% static 'image/icon-exit.svg' %}" width="20px"> Выйти</a></li>
               </ul>
 
               {% else %}
@@ -127,11 +127,11 @@
         <div class="col-6 col-md-2 mb-3">
           <h5>Информация</h5>
           <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark">О нас</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark">Справочная информация</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark">Правила сайта</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark">Пользовательское соглашение</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark">Публичная оферта</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'about_us' %}" class="nav-link p-0 text-dark">О нас</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'background_information' %}" class="nav-link p-0 text-dark">Справочная информация</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'rules' %}" class="nav-link p-0 text-dark">Правила сайта</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'user_agreement' %}" class="nav-link p-0 text-dark">Пользовательское соглашение</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'public_offer' %}" class="nav-link p-0 text-dark">Публичная оферта</a></li>
           </ul>
         </div>
   
@@ -182,6 +182,6 @@
     <script src="{% static 'base/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'base/js/slick.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/ajax.js' %}"></script>
+    <script src="{% static 'js/ajax-main.js' %}"></script>
 </body>
 </html>

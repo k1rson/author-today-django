@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     'apps.main_app.apps.MainAppConfig', 
     'apps.profile_app.apps.ProfileAppConfig',
     'apps.authentication_app.apps.AuthenticationAppConfig',
+    'apps.information_pages_app.apps.InformationPagesAppConfig',
+    'apps.mail_client_app.apps.MailClientAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -94,3 +96,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTH_USER_MODEL = 'profile_app.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# IMAP CONFIGURATION
+IMAP_SERVER = 'imap.mail.ru'
+IMAP_PORT = 993
+IMAP_USERNAME = 'sup-author-today@bk.ru'
+IMAP_PASSWORD = 'kCf1su4UvhmmxpM5bfCr'
+
+# SMTP CONFIGURATION
+SMTP_SERVER = 'smtp.mail.ru'
+SMTP_PORT = 465 
+SMTP_USERNAME = 'sup-author-today@bk.ru'
+SMTP_PASSWORD = 'kCf1su4UvhmmxpM5bfCr'
