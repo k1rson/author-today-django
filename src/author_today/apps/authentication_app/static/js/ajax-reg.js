@@ -64,29 +64,32 @@ function checkUsername() {
     let successMark = document.getElementById('check-mark-success-login')
     let errorMark = document.getElementById('check-mark-error-login')
 
-    let postData = new FormData()
-    postData.append('username', input.value)
+    let postData = new FormData();
+    postData.append('username', input.value);
 
-    if(!validateUsername(input.value) || !isUsernameBanned(input.value)) {
-        successMark.classList.add('d-none')
-        errorMark.classList.remove('d-none')
+    if (!validateUsername(input.value) || !isUsernameBanned(input.value)) {
+        successMark.classList.add('d-none');
+        errorMark.classList.remove('d-none');
+        input.classList.add('error');
 
-        return
+        return;
     }
 
     checkField(spinner, 'check_login', postData)
     .then(isError => {
         if (isError) {
-            errorMark.classList.add('d-none')
-            successMark.classList.remove('d-none')
+            errorMark.classList.add('d-none');
+            successMark.classList.remove('d-none');
         } else {
-            successMark.classList.add('d-none')
-            errorMark.classList.remove('d-none')
+            successMark.classList.add('d-none');
+            errorMark.classList.remove('d-none');
+            input.classList.add('error');
         }
-    })
+    });
 
-    updateButtonState()
+    updateButtonState();
 }
+
 
 function checkEmail() {
     let input = document.getElementById('email-input') 
@@ -100,6 +103,7 @@ function checkEmail() {
     if(!validateEmail(input.value)){
         successMark.classList.add('d-none')
         errorMark.classList.remove('d-none')
+        input.classList.add('error');
 
         return
     }
@@ -112,6 +116,7 @@ function checkEmail() {
         } else {
             successMark.classList.add('d-none')
             errorMark.classList.remove('d-none')
+            input.classList.add('error');
         }
     })
 
@@ -131,7 +136,7 @@ function checkPassword() {
         successMark.classList.add('d-none')
         errorMark.classList.remove('d-none')
         
-        console.log('password incorrect')
+        input.classList.add('error');
         return
     }
     else{
