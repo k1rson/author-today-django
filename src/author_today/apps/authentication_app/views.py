@@ -32,9 +32,9 @@ def check_email(request) -> JsonResponse:
     user = get_object_user('email', email)
 
     if not user: 
-        return JsonResponse({'status': 'success'})
+        return JsonResponse({'status': 'error'})
     
-    return JsonResponse({'status': 'error'})
+    return JsonResponse({'status': 'success'})
 
 def check_login(request) -> JsonResponse:
     username = request.POST.get('username')

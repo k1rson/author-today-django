@@ -17,6 +17,14 @@ function csrfSafeMethod(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
 
+function validateUsername(username) {
+    if (username.length > 18) {
+        return false
+    }
+    
+    return true
+}
+
 function validateEmail(email){
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailPattern.test(email);

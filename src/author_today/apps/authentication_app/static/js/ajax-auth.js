@@ -1,15 +1,22 @@
+function updateButtonState(button, input1, input2) {
+    let isInput1Valid = !input1.hasClass('error');
+    let isInput2Valid = !input2.hasClass('error');
+    
+    button.disabled = !(isInput1Valid && isInput2Valid);
+}
+
 function checkFields(inputId, spinnerID, successMarkId, errorMarkId, url, postData, buttonId){
     let button = document.getElementById(buttonId);
-    let input = $(inputId)
-    let spinner = $(spinnerID)
-    let successMark = $(successMarkId)
-    let errorMark = $(errorMarkId)
+    let input = $(inputId);
+    let spinner = $(spinnerID);
+    let successMark = $(successMarkId);
+    let errorMark = $(errorMarkId);
 
-    spinner.removeClass('d-none')
+    spinner.removeClass('d-none');
     successMark.addClass('d-none');
     errorMark.addClass('d-none');
 
-    let crsf_token = getCookie('csrftoken')
+    let crsf_token = getCookie('csrftoken');
     $.ajax({
         url: url,
         type: 'POST',
@@ -17,40 +24,38 @@ function checkFields(inputId, spinnerID, successMarkId, errorMarkId, url, postDa
         contentType: false, 
         processData: false,
         beforeSend: function(xhr, settings){
-            if(!csrfSafeMethod(settings.type) && !this.crossDomain){
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain){
                 xhr.setRequestHeader("X-CSRFToken", crsf_token); 
             }
         },
         success: function(response) {
-            if(response.status == 'success'){
+            if (response.status === 'success'){
                 spinner.addClass('d-none');
                 successMark.removeClass('d-none');
-
-                button.disabled = false
+                input.removeClass('error');
             }
             else{
                 spinner.addClass('d-none');
                 errorMark.removeClass('d-none');
-                input.addClass('error'); 
-
-                button.disabled = true
+                input.addClass('error');
             }
+            updateButtonState(button, $('#login-input'), $('#password-input'));
         },
         error: function(status) {
-            callToast('Ошибка в работе сервера. Подробная информация: ' + status)
+            callToast('Ошибка в работе сервера. Подробная информация: ' + status);
         }
     });
 
-    input.removeClass('error')
+    input.removeClass('error');
 }
 
 function checkUsername() {
     let username = $('#login-input').val();
 
     let postData = new FormData(); 
-    postData.append('username', username)
-
-    checkFields('#login-input', '#spinner', '#check-mark-success', '#check-mark-error', 'check_login', postData, 'button-auth')
+    postData.append('username', username);
+    
+    checkFields('#login-input', '#spinner', '#check-mark-success', '#check-mark-error', 'check_login', postData, 'button-auth');
 }
 
 function checkPassword(){
@@ -58,18 +63,18 @@ function checkPassword(){
     let password = $('#password-input').val(); 
 
     let postData = new FormData();
-    postData.append('username', username)
-    postData.append('password', password)
+    postData.append('username', username);
+    postData.append('password', password);
 
-    checkFields('#password-input', '#spinner-ps', '#check-mark-success-ps', '#check-mark-error-ps', 'check_password', postData, 'button-auth')
+    checkFields('#password-input', '#spinner-ps', '#check-mark-success-ps', '#check-mark-error-ps', 'check_password', postData, 'button-auth');
 }
 
 function authorizationUser(){
     let postData = new FormData(); 
-    postData.append('username', $('#login-input').val())    
-    postData.append('password', $('#password-input').val()) 
+    postData.append('username', $('#login-input').val());    
+    postData.append('password', $('#password-input').val()); 
 
-    let crsf_token = getCookie('csrftoken')
+    let crsf_token = getCookie('csrftoken');
     $.ajax({
         url: 'auth_user',
         type: 'POST',
@@ -77,16 +82,19 @@ function authorizationUser(){
         contentType: false, 
         processData: false,
         beforeSend: function(xhr, settings){
-            if(!csrfSafeMethod(settings.type) && !this.crossDomain){
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain){
                 xhr.setRequestHeader("X-CSRFToken", crsf_token); 
             }
         },
         success: function(response) {
-            window.location.href = '/'
+            window.location.href = '/';
         },
         error: function(status) {
-            callToast('Ошибка в работе сервера. Подробная информация: ' + status)
+            callToast('Ошибка в работе сервера. Подробная информация: ' + status);
         }
     });
 }
 
+$('#login-input, #password-input').on('input', function() {
+    updateButtonState(document.getElementById('button-auth'), $('#login-input'), $('#password-input'));
+});
