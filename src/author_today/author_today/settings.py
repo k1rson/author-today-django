@@ -97,7 +97,6 @@ AUTH_USER_MODEL = 'profile_app.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # IMAP CONFIGURATION
 IMAP_SERVER = 'imap.mail.ru'
 IMAP_PORT = 993

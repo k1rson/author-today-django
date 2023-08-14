@@ -1,0 +1,186 @@
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ========== Bootstrap ========== -->
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}">
+
+    <!-- ========== Custom ========== -->
+    <link rel="icon" href="{% static 'image/icon_for_all_pages.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+    <title>{% block title %}UNKNOW - AT{% endblock  %}</title>
+</head>
+<body>  
+    <!-- ========== Header ========== -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(228, 143, 19);">
+        <div class="container-fluid" style="max-width: 130vh;">
+            <!-- Logo -->
+            <a href="/"><img src="{% static 'image/icon.svg' %}" width="40px"></a>
+
+            <!-- Sections (Dropdown Buttons) -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <!-- Dropdown - BOOKS -->
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a class="nav-link text-light dropdown-toggle" href="#">
+                            Книги
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><h3 class="dropdown-header"><img class="mb-1" src="{% static 'image/icon.svg' %}" width="17px"> Электронные книги</h3></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/fire.svg' %}" alt="Новинки" width="20px"> Новинки</a></li>
+                            <li><a class="dropdown-item" href="#"> <img src="{% static 'image/discount.svg' %}" alt="Скидки" width="20px"> Скидки</a></li>
+                            <li><a class="dropdown-item" href="#"> <img src="{% static 'image/many_books.svg' %}" alt="Все книги" width="20px"> Все книги</a></li>
+
+                            <li><h3 class="dropdown-header"><img class="mb-1" src="{% static 'image/icon.svg' %}" width="17px"> Аудиокниги</h3></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-2" src="{% static 'image/fire.svg' %}" alt="Новинки" width="20px"> Новинки</a></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/discount.svg' %}" alt="Скидки" width="20px"> Скидки</a></li>
+                            <li><a class="dropdown-item" href="#"> <img src="{% static 'image/audio_books.svg' %}" alt="Все книги" width="20px"> Все аудиокниги</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Dropdown - DISCUSSIONS -->
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" href="#">Обсуждения</a>
+                    </li>
+
+                    <!-- Dropdown - COMMUNITY -->
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a class="nav-link text-light dropdown-toggle" href="#">
+                            Сообщество
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/cup.svg' %}" alt="Конкурсы" width="20px"> Конкурсы</a></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/illustration.svg' %}" alt="Иллюстрации" width="20px"> Иллюстрации</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/top-authors.svg' %}" alt="Топ авторов" width="20px"> Топ авторов</a></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/crown.svg' %}" alt="Топ пользователей" width="20px"> Топ пользователей</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Dropdown - MY LIBRARY -->
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" href="#">Моя библиотека</a>
+                    </li>
+                </ul>
+
+                <!-- Sections (Profile User) -->
+                {% if not user.is_authenticated %}
+                    <a class="btn btn-outline-light me-2" href="{% url 'login' %}" style="text-decoration: none;">Войти</a>
+                {% else %}
+
+                <!-- Profile Buttons (Dropdown buttons)-->
+                <ul class="navbar-nav">
+                    <!-- Search Modal-->
+                    <li class="nav-item">
+                        <a onclick="OpenModalForSearch()" href=""><img class="me-3 mt-1" src="{% static 'image/search.svg' %}" width="25px" style="filter: brightness(0) invert(1)"></a>
+                    </li>
+
+                    <!-- My messages-->
+                    <li class="nav-item">
+                        <a href=""><img class="me-3 mt-1" src="{% static 'image/message.svg' %}" width="25px"  style="filter: brightness(0) invert(1)"></a>
+                    </li>
+
+                    <!-- My notifications-->
+                    <li class="nav-item">
+                        <a href="" class=""><img class="me-3 mt-1 swing-icon" src="{% static 'image/notification.svg' %}" width="25px" style="filter: brightness(0) invert(1)"></a>
+                    </li>
+
+                    <!-- Profile Buttons-->
+                    <li class="nav-item dropdown dropdown-hover">
+                        {% if not user.avatar %}
+                        <a href=""><img src="{% static 'image/default-avatar.svg' %}" class="me-2 rounded-circle border border-black dropdown-toggle" width="35px"></a>
+                        
+                        {% else %}
+                        <a href=""><img src="{{ user.avatar.url }}" class="me-2 rounded-circle border border-black dropdown-toggle" width="35px"></a>
+                        {% endif %}
+                        
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-blog.svg' %}" width="20px"> Блог</a></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-pen.svg' %}" width="20px"> Рецензии</a></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/illustration.svg' %}" width="20px"> Иллюстрации</a></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/top-authors.svg' %}" width="20px"> Подборки</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-profile.svg' %}" width="20px"> Мой профиль</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' %}"> <img class="mb-1" src="{% static 'image/icon-settings.svg' %}" width="20px"> Личный кабинет</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'logout_user' %}"><img class="mb-1" src="{% static 'image/icon-exit.svg' %}" width="20px"> Выйти</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+{% block content %}{% endblock content %}
+
+  <!-- ========== Footer ========== -->
+  <div class="container">
+    <footer class="py-5">
+      <div class="row">
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Информация</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="{% url 'about_us' %}" class="nav-link p-0 text-dark">О нас</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'background_information' %}" class="nav-link p-0 text-dark">Справочная информация</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'rules' %}" class="nav-link p-0 text-dark">Правила сайта</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'user_agreement' %}" class="nav-link p-0 text-dark">Пользовательское соглашение</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'public_offer' %}" class="nav-link p-0 text-dark">Публичная оферта</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Связь с нами</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark">Предложить идею</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark">Техническая поддержка</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark">Создатель проекта: Владислав Кузин</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark h6">Подписаться на нас</a></li>
+            <li class="nav-item mb-2">
+              <a href="" class="me-2"><img src="{% static 'image/icon-vk.svg' %}" width="30px"></a>
+              <a href="" class="me-2"><img src="{% static 'image/icon-telegram.svg' %}" width="30px"></a>
+              <a href="" class="me-2"><img src="{% static 'image/icon-github.svg' %}" width="30px"></a>
+              <a href="" class="me-2"><img src="{% static 'image/icon-discord.svg' %}" width="30px"></a>
+            </li>
+            
+        </div>
+
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Иные приложения</h5>
+          <ul class="nav flex-column">
+            <li onclick="OpenModalNotCompletedElement()" class="no-select-a nav-item mb-2"><a class="nav-link p-0 text-dark"><img src="{% static 'image/icon-desktop.svg' %}" width="25px"> Приложение для ПК</a></li>
+            <li onclick="OpenModalNotCompletedElement()" class="no-select-a nav-item mb-2"><a class="nav-link p-0 text-dark"><img src="{% static 'image/icon-playmarket.svg' %}" width="22px"> Приложение для Android</a></li>
+            <li onclick="OpenModalNotCompletedElement()" class="no-select-a nav-item mb-2"><a class="nav-link p-0 text-dark"><img src="{% static 'image/icon-appstore.svg' %}" width="25px"> Приложение для IOS</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-md-5 offset-md-1">
+          <form>
+            <h5>Подпишитесь на наши обновления!</h5>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden">Ваша эл. почта</label>
+              <input id="newsletter1" type="text" class="form-control" placeholder="ivanov@mail.ru">
+              <button class="btn btn-outline-primary" type="button">Подписаться</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 border-top">
+        <p>&copy; 2023 AuthorToday, Inc. Все права защищены.</p>
+      </div>
+  </footer>
+</div>
+    <!-- ========== Bootstrap & JQuery|Ajax ========== -->
+    <script src="{% static 'base/js/jquery.min.js' %}"></script>
+    <script src="{% static 'base/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    {% block scripts %}{% endblock scripts %}
+</body>
+</html>

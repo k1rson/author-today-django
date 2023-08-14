@@ -1,0 +1,27 @@
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ========== Bootstrap ========== -->
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}">
+
+    <!-- ========== Custom ========== -->
+    <link rel="icon" href="{% static 'base/image/icon_for_all_pages.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/main-auth.css' %}">
+
+    <title>{% block title %}UNKNOW - AT{% endblock title %}</title>
+</head>
+<body>
+    {% block content %} {% endblock content %}
+    
+    <!-- ========== Bootstrap & JQuery|Ajax | Slick ========== -->
+    <script src="{% static 'base/js/jquery.min.js' %}"></script>
+    <script src="{% static 'base/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/support-functions.js' %}"></script>
+    
+    {% block scripts %}{% endblock scripts %}
+</body>

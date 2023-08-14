@@ -1,89 +1,67 @@
+{% extends "base/auth_base.html" %}
+
 {% load static %}
 
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Авторизация - AT{% endblock title %}
 
-    <!-- ========== Bootstrap ========== -->
-    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}">
+{% block content %}
+{% csrf_token %}
 
-    <!-- ========== Custom ========== -->
-    <link rel="icon" href="{% static 'image/icon_for_all_pages.ico' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'css/main-auth.css' %}">
+<main>
+    <section class="vh-100">
+        <div class="container-fluid">
+            <div class="h-100 row d-flex justify-content-center align-items-center">
 
-    <title>Авторизация</title>
-</head>
-<body>
-<section class="vh-100">
-    <div class="container-fluid h-custom">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src="{% static 'image/icon-books.svg' %}" class="img-fluid">
-        </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-3">
-                <p class="lead fw-normal mb-0 me-3">Войти с помощью</p>
-                <a href="#" class="me-2"><img src="{% static 'image/icon-vk.svg' %}" width="25px"></a>
-                <a href="#" class="me-2"><img src="{% static 'image/icon-telegram.svg' %}" width="25px"></a>
-                <a href="#" class="me-1"><img src="{% static 'image/icon-google.svg' %}" width="25px"></a>
-                <a href="#"><img src="{% static 'image/icon-yandex.svg' %}" width="30px"></a>
-            </div>
-
-            {% csrf_token %}
-            <!-- Email input -->
-            <div class="form-outline mb-3">
-                <input onchange="checkUsername()" type="email" id="login-input" class="form-control form-control-lg" placeholder="Введите Email/Login" />
-                <div class="spinner-border text-danger spinner-border-sm d-none" id="spinner"></div>
-                <span id="check-mark-success" class="d-none" data-bs-toggle="tooltip" title="Такой логин существует"><img src="{% static 'gif/success-animated.gif' %}" width="18px"></span>
-                <span id="check-mark-error" class="d-none" data-bs-toggle="tooltip" title="Такого пользователя не существует"><img src="{% static 'gif/warning-animated.gif' %}" width="18px"></span>
-                <label class="form-label">Ваш Email/Login</label>
-            </div>
-
-            <!-- Password input -->
-            <div class="form-outline mb-3">
-                <input onchange="checkPassword()" type="password" id="password-input" class="form-control form-control-lg" placeholder="Введите Ваш пароль" />
-                <div class="spinner-border text-danger spinner-border-sm d-none" id="spinner-ps"></div>
-                <span id="check-mark-success-ps" class="d-none" data-bs-toggle="tooltip" title="Пароль верный"><img src="{% static 'gif/success-animated.gif' %}" width="18px"></span>
-                <span id="check-mark-error-ps" class="d-none" data-bs-toggle="tooltip" title="Пароль неверный"><img src="{% static 'gif/warning-animated.gif' %}" width="18px"></span>
-                <label class="form-label">Ваш пароль</label>
-            </div>
-    
-            <div class="d-flex justify-content-center align-items-center">
-                <!-- Checkbox -->
-                <div class="form-check mb-0">
+                <!-- Left Side -->
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="{% static 'image/icon-books.svg' %}" class="img-fluid">
                 </div>
-                <a href="{% url 'reset_password' %}" class="text-body">Забыли пароль или логин?</a>
-            </div>
+
+                <!-- Rigth Side -->
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-3">
+                        <p class="lead fw-normal mb-0 me-3">Войти с помощью</p>
+                        <a href="#" class="me-2"><img src="{% static 'image/icon-vk.svg' %}" width="25px"></a>
+                        <a href="#" class="me-2"><img src="{% static 'image/icon-telegram.svg' %}" width="25px"></a>
+                        <a href="#" class="me-1"><img src="{% static 'image/icon-google.svg' %}" width="25px"></a>
+                        <a href="#"><img src="{% static 'image/icon-yandex.svg' %}" width="30px"></a>
+                    </div>
+        
+                <!-- Email input -->
+                <div class="form-outline mb-3">
+                    <input onchange="checkUsername()" type="email" id="login-input" class="form-control form-control-lg" placeholder="Введите Email/Login" />
+                    <div class="spinner-border text-danger spinner-border-sm d-none" id="spinner"></div>
+                    <span id="check-mark-success" class="d-none" data-bs-toggle="tooltip" title="Такой логин существует"><img src="{% static 'gif/success-animated.gif' %}" width="18px"></span>
+                    <span id="check-mark-error" class="d-none" data-bs-toggle="tooltip" title="Такого пользователя не существует"><img src="{% static 'gif/warning-animated.gif' %}" width="18px"></span>
+                    <label class="form-label">Ваш Email/Login</label>
+                </div>
     
-            <div class="text-center text-center text-lg-center mt-4">
-                <button id="button-auth" onclick="authorizationUser()" type="button" class="btn btn-outline-success" style="padding-left: 2.5rem; padding-right: 2.5rem;">Авторизоваться</button>
-                <p class="small fw-bold mt-2 pt-1 mb-0">Нет аккаунта? <a href="{% url 'registration' %}"
-                    class="link-danger">Зарегистрироваться</a></p>
+                <!-- Password input -->
+                <div class="form-outline mb-3">
+                    <input onchange="checkPassword()" type="password" id="password-input" class="form-control form-control-lg" placeholder="Введите Ваш пароль" />
+                    <div class="spinner-border text-danger spinner-border-sm d-none" id="spinner-ps"></div>
+                    <span id="check-mark-success-ps" class="d-none" data-bs-toggle="tooltip" title="Пароль верный"><img src="{% static 'gif/success-animated.gif' %}" width="18px"></span>
+                    <span id="check-mark-error-ps" class="d-none" data-bs-toggle="tooltip" title="Пароль неверный"><img src="{% static 'gif/warning-animated.gif' %}" width="18px"></span>
+                    <label class="form-label">Ваш пароль</label>
+                </div>
+            
+                <!-- Reset Password -->
+                <div class="d-flex justify-content-center align-items-center">
+                    <a href="{% url 'reset_password' %}" class="text-body">Забыли пароль или логин?</a>
+                </div>
+            
+                <!-- Auth Button -->
+                <div class="text-center text-center text-lg-center mt-4">
+                    <button id="button-auth" onclick="authorizationUser()" type="button" class="btn btn-outline-success" style="padding-left: 2.5rem; padding-right: 2.5rem;">Авторизоваться</button>
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Нет аккаунта? <a href="{% url 'registration' %}"class="link-danger">Зарегистрироваться</a></p>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
+    </section>
+</main>
 
-    <!-- Тост для уведомлений ептеть -->
-  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1060">
-    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="{% static 'gif/' %}" class="rounded me-2" width="25">
-        <strong class="me-auto">Уведомление</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body" id="toastContent">
-      </div>
-    </div>
-  </div>
+{% endblock content %}
 
-</section>
-
-    <!-- ========== Bootstrap & JQuery|Ajax | Slick ========== -->
-    <script src="{% static 'base/js/jquery.min.js' %}"></script>
-    <script src="{% static 'base/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'js/support-functions.js' %}"></script>
+{% block scripts %}
     <script src="{% static 'js/ajax-auth.js' %}"></script>
-</body>
+{% endblock scripts %}
