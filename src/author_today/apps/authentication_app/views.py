@@ -1,18 +1,13 @@
-import os, random, string
-
-from jinja2 import Template, Environment, FileSystemLoader
-
 from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
 
 from django.views import View
 from django.http import JsonResponse
-from django.core.mail import EmailMultiAlternatives
 
-from django.shortcuts import render, redirect
-
-from ..profile_app.models import User
-
+from ..mail_client_app.utils import TemplateGenerator
 from ..mail_client_app.smtp_utils.smtp_client import SMTPServer
+
+from .service.services import get_object_user, generate_password
 
 class AuthorizationPageView(View):
     def get(self, request):
@@ -109,14 +104,16 @@ def reset_password(request) -> JsonResponse:
 
     if not user:
         return JsonResponse({'status': 'error'})
-
-    template_dir = os.path.join(os.path.dirname(__file__), 'templates/email') 
-    env = Environment(loader=FileSystemLoader(template_dir))
-    template = env.get_template('reset_password_email.html')
-
+    
     password = generate_password(10)
 
-    html_content = template.render(username=user.username, password=password)
+    context = {
+        'username': user.username,
+        'password': password
+    }
+    
+    template_generator = TemplateGenerator('reset_password_email.html')
+    html_content = template_generator.generate_html_content(context)
 
     smtp_server = SMTPServer()
     smtp_server.send_message(f'Ваша учетная запись - {user.username}. Восстановление пароля', '', email, html_content)
@@ -125,22 +122,3 @@ def reset_password(request) -> JsonResponse:
     user.save()
 
     return JsonResponse({'status': 'success'})
-
-# custom function
-def get_object_user(attribute: str, value: str) -> User: 
-    try: 
-        if attribute == 'username':
-            user = User.objects.get(username=value)
-        elif attribute == 'email':
-            user = User.objects.get(email=value)
-        else:
-            user = None
-        return user
-    except User.DoesNotExist: 
-        return None
-    
-def generate_password(length):
-    characters = string.ascii_letters + string.digits + string.punctuation
-    password = ''.join(random.choice(characters) for _ in range(length))
-
-    return password

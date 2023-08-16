@@ -1,0 +1,73 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    font-family: 'BlinkMacSystemFont', sans-serif; 
+}
+
+@font-face {
+    font-family: 'BlinkMacSystemFont';
+    src: url('./fonts/BlinkMacSystemFont-Regular.woff2') format('woff2'),
+        url('./fonts/BlinkMacSystemFont-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BlinkMacSystemFont';
+    src: url('./fonts/BlinkMacSystemFont-Bold.woff2') format('woff2'),
+        url('./fonts/BlinkMacSystemFont-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+.background-image {
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.text-small{
+    font-size: 15px;
+}
+
+.input-container {
+    position: relative;
+}
+
+.placeholder {
+    position: absolute;
+    top: 50%;
+    left: 11%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    color: gray; 
+    font-size: 15px;
+    transition: color 0.5s ease; 
+}
+
+.container-custom-active {
+    border: 1px solid rgb(122, 122, 122); 
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.container-custom-none-active {
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.book-card{
+    margin-bottom: 5px;
+    background-color: rgb(255, 255, 255);
+    
+    border-radius: 30px 0 30px 0;
+}
+
+.custom-checkbox-label {
+    margin-left: 10px; /* Измените значение на желаемое */
+  }

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{% static 'base/css/slick-theme.css' %}">
 
     <!-- ========== Custom ========== -->
-    <link rel="icon" href="{% static 'image/icon_for_all_pages.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'base/image/icon_for_all_pages.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     <title>{% block title %}UNKNOW - AT{% endblock  %}</title>
@@ -109,8 +109,8 @@
                             <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/illustration.svg' %}" width="20px"> Иллюстрации</a></li>
                             <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/top-authors.svg' %}" width="20px"> Подборки</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-profile.svg' %}" width="20px"> Мой профиль</a></li>
-                            <li><a class="dropdown-item" href="{% url 'profile' %}"> <img class="mb-1" src="{% static 'image/icon-settings.svg' %}" width="20px"> Личный кабинет</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' user.id %}"> <img class="mb-1" src="{% static 'image/icon-profile.svg' %}" width="20px"> Мой профиль</a></li>
+                            <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-settings.svg' %}" width="20px"> Личный кабинет</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'logout_user' %}"><img class="mb-1" src="{% static 'image/icon-exit.svg' %}" width="20px"> Выйти</a></li>
                         </ul>
@@ -176,6 +176,7 @@
       </div>
   
       <div class="d-flex flex-column flex-sm-row justify-content-between py-4 border-top">
+        <p>В случаях нарушения авторских прав - обращайтесь на почту info@mangalib.me</p>
         <p>&copy; 2023 AuthorToday, Inc. Все права защищены.</p>
       </div>
   </footer>

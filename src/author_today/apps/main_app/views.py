@@ -9,7 +9,7 @@ from ..profile_app.models import User
 
 class HomePageView(View):
     def get(self, request):
-        return render(request, 'index.html')
+        return render(request, 'index_main.html')
     
 # AJAX functions    
 def get_books(request):
