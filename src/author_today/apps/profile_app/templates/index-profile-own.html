@@ -12,20 +12,38 @@
             <!-- Background/Avatar/Info Section -->
             <div class="row d-flex flex-row justify-content-start text-center">
                 <div class="col background-image" style="max-height: 210px;">
-                    <img src="{% static 'image/default-background-image.jpg' %}">
+                    {% if not user.background_image %}
+                        <img src="{% static 'image/default-background-image.jpg' %}"> 
+                    {% else %}
+                        <img src="{{ user.background_image.url }}"> 
+                    {% endif %}
                 </div>
                 <div class="col">
                     <div class="container rounded bg-white">
                         <div class="row d-flex">
                             <div class="col d-flex align-content-start text-start mt-2 mb-2 p-0">
-                                <img src="{% static 'image/default-avatar.svg' %}" class="border border-dark rounded-circle shadow-lg" width="50px">
+                                {% if not user.avatar %}
+                                    <img src="{% static 'image/default-avatar.svg' %}" class="border border-dark rounded-circle shadow-lg active-avatar" width="50px"> <!--USER-->
+                                {% else %}
+                                    <img src="{{ user.avatar.url }}" class="border border-dark rounded-circle shadow-lg active-avatar" width="50px"> <!--USER-->
+                                {% endif %}
+
                                 <div class="mt-1 mx-2">
-                                    <span class="h6"><strong>k1rson</strong></span>
+                                    <span class="h6">
+                                        <strong id="username">username</strong>
+                                        <strong id="role">Читатель</strong>
+                                        <strong id="exp">Читатель</strong>
+                                        <strong id="lvl">Читатель</strong>
+                                    </span>
                                     <br>
-                                    <span class="text-sm" style="font-size: 14px;">Уровень 2 • Ранг # Не определен</span>
+                                    <span style="font-size: 14px;">
+                                        <span>
+                                            <--- Наведи на аватар
+                                        </span>
+                                    </span>
                                 </div>
                             </div>
-                            <div class="col-8 d-flex align-items-center justify-content-end mt-1 mb-1 p-0">
+                            <div class="col-6 d-flex align-items-center justify-content-end mt-1 mb-1 p-0">
                                 <button type="button" class="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center" style="max-height: 30px;">
                                     <img src="{% static 'image/icon-settings.svg' %}" width="18px" class="me-1"> 
                                     Настройки
@@ -56,7 +74,7 @@
                             </div>
                             <div class="col d-flex align-items-center justify-content-end">
                                 <p class="text-muted" style="font-size: 15px;">
-                                    <a href="#"><img src="{% static 'image/icon-profile.svg' %}" width="18px" class="me-1">Информация о пользователе</a>
+                                    <a href="#" onclick="openModalWithInfoUser()"><img src="{% static 'image/icon-profile.svg' %}" width="18px" class="me-1">Паспорт читателя</a>
                                 </p>
                             </div>
                         </div>
@@ -176,7 +194,7 @@
                                                 <div class="col d-flex align-content-start text-start mt-2 mb-2 p-0">
                                                     <img src="{% static 'image/4.jpg' %}" width="60px" height="85px" class="shadow-sm rounded">
                                                     <div class="mt-1 mx-2">
-                                                        <a href="#" class="h6"><strong>Алхимик. Путь провидца. Даник дурак</strong></a>
+                                                        <a href="#" class="h6 fw-bolder">Алхимик. Путь провидца. Даник дурак</a>
                                                         <br>
                                                         <span class="text-muted" style="font-size: 13px;"><a href="#">Василий Маханенко</a>, <a href="#">Ярослав Ягненков</a>, <a href="#">Петр Дубровский</a>, <a href="#">Василий Арбузин</a></span>
                                                         <br>
@@ -259,10 +277,30 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal | Info About User -->
+    <div class="modal fade" id="modal-detail-info-user" tabindex="-1" aria-labelledby="modalwithInfoUser" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Unknow Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    Unknow Body
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </main>
 
 {% endblock content %}
 
 {% block scripts %}
-    <script src="{% static 'js/main_profile.js' %}"></script>
+    <script src="{% static 'js/support-functions.js' %}"></script>
+    <script src="{% static 'js/main-profile.js' %}"></script>
 {% endblock scripts %}

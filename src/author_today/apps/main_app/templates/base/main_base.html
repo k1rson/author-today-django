@@ -70,6 +70,18 @@
                     <li class="nav-item">
                         <a class="nav-link active text-light" href="#">Моя библиотека</a>
                     </li>
+                    
+                    <!-- Dropdown - Developer Notes -->
+                    <li class="nav-item dropdown dropdown-hover">
+                      <a class="nav-link text-light dropdown-toggle" href="#">
+                          Дневник разработчика
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-note-book.svg' %}" alt="Конкурсы" width="20px"> Дневник разработчика</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-statistic.svg' %}" alt="Топ авторов" width="20px"> Статистика сайта</a></li>
+                      </ul>
+                    </li>
                 </ul>
 
                 <!-- Sections (Profile User) -->
@@ -113,6 +125,8 @@
                             <li><a class="dropdown-item" href="#"> <img class="mb-1" src="{% static 'image/icon-settings.svg' %}" width="20px"> Личный кабинет</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'logout_user' %}"><img class="mb-1" src="{% static 'image/icon-exit.svg' %}" width="20px"> Выйти</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><p class="dropdown-item"><img class="mb-1" src="{% static 'image/icon-id-card.svg' %}" width="20px"> Номер ID-Card: <strong id="user-id">{{ user.id }}</strong></p></li>
                         </ul>
                     </li>
                 </ul>

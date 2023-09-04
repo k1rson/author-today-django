@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'BlinkMacSystemFont';
+    src: url('./fonts/BlinkMacSystemFont-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'BlinkMacSystemFont', sans-serif; 
+}

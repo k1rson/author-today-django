@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.http import JsonResponse
 
+from ..profile_app.models import User
+
 from ..mail_client_app.utils import TemplateGenerator
 from ..mail_client_app.smtp_utils.smtp_client import SMTPServer
 
@@ -71,7 +73,7 @@ def registration_user(request) -> JsonResponse:
     password = request.POST.get('password')
     email = request.POST.get('email') 
 
-    user = User.objects.create_user(username=username, password=password, email=email)
+    user = User.objects.create_user(username=username, password=password, email=email, exp=0, lvl=1, role=1)
 
     if user is not None: 
         login(request, user)

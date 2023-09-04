@@ -1,0 +1,312 @@
+{% extends 'base/profile_base.html' %}
+
+{% load static %}
+
+{% block title %}Личный кабинет - AT{% endblock title %}
+
+{% block content %}
+
+<main>
+    <section style="background-color: f2f2f3;">
+        <div class="container-fluid" style="max-width: 130vh;">
+            <!-- Background/Avatar/Info Section -->
+            <div class="row d-flex flex-row justify-content-start text-center">
+                <div class="col background-image" style="max-height: 210px;">
+                    {% if not user.background_image %}
+                        <img src="{% static 'image/default-background-image.jpg' %}"> 
+                    {% else %}
+                        <img src="{{ user.background_image.url }}"> 
+                    {% endif %}
+                </div>
+                <div class="col">
+                    <div class="container rounded bg-white">
+                        <div class="row d-flex">
+                            <div class="col d-flex align-content-start text-start mt-2 mb-2 p-0">
+                                {% if not user.avatar %}
+                                    <img src="{% static 'image/default-avatar.svg' %}" class="border border-dark rounded-circle shadow-lg active-avatar" width="50px"> <!--USER-->
+                                {% else %}
+                                    <img src="{{ user.avatar.url }}" class="border border-dark rounded-circle shadow-lg active-avatar" width="50px"> <!--USER-->
+                                {% endif %}
+
+                                <div class="mt-1 mx-2">
+                                    <span class="h6">
+                                        <strong id="username">username</strong>
+                                        <strong id="role">Читатель</strong>
+                                        <strong id="exp">Читатель</strong>
+                                        <strong id="lvl">Читатель</strong>
+                                    </span>
+                                    <br>
+                                    <span style="font-size: 14px;">
+                                        Online
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex align-items-center justify-content-end mt-1 mb-1 p-0">
+                                <button type="button" class="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center me-1" style="max-height: 30px;">
+                                    <img src="{% static 'image/icon-add-friend.svg' %}" width="18px" class="me-1"> 
+                                    Добавить в друзья
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-success d-flex align-items-center justify-content-center me-1" style="max-height: 30px;">
+                                    <img src="{% static 'image/icon-message.svg' %}" width="18px" class="me-1"> 
+                                    Написать
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-danger d-flex align-items-center justify-content-center me-1" style="max-height: 30px;">
+                                    <img src="{% static 'image/icon-settings.svg' %}" width="18px" class="me-1"> 
+                                    Добавить в игнор-лист
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row d-flex">
+                            <hr>
+                            <div class="col-9 d-flex align-items-center justify-content-start text-small p-0">
+                                <p class="me-4 mx-1">
+                                    <a href="#">Списки</a>
+                                </p>
+                                <p class="me-4" >
+                                    <a href="#">Комментарии</a>
+                                </p>
+                                <p class="me-4">
+                                    <a href="#">Друзья</a>
+                                </p>
+                                <p class="me-4">
+                                    <a href="#">Сообщения</a>
+                                </p>
+                                <p class="me-4">
+                                    <a href="#">Игнор-лист</a>
+                                </p>
+                                <p class="me-4">
+                                    <a href="#">Уведомления</a>
+                                </p>
+                            </div>
+                            <div class="col d-flex align-items-center justify-content-end">
+                                <p class="text-muted" style="font-size: 15px;">
+                                    <a href="#" onclick="openModalWithInfoUser()"><img src="{% static 'image/icon-profile.svg' %}" width="18px" class="me-1">Информация о пользователе</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Horizontal Section -->
+            <div class="row d-flex flex-row justify-content-center g-2 text-small">
+                <div class="col d-flex justify-content-start align-content-start">
+                    <div class="container rounded mt-2 text-center">
+                        <a href="#" class="container mb-1 container-custom-active d-flex align-items-center p-1 text-decoration-none">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static 'image/icon-books.svg' %}" width="20px" style="margin-right: 8px;">
+                            </div>
+                            <p class="text-center m-0 flex-grow-1">Все книги</p>
+                            <p class="text-center m-0 flex-grow-0" style="font-size: 12px;">20</p>
+                        </a>
+                        <a href="#" class="container mb-1 container-custom-none-active d-flex align-items-center p-1 text-decoration-none">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static 'gif/book-animated.gif' %}" width="20px" style="margin-right: 8px;">
+                            </div>
+                            <p class="text-center m-0 flex-grow-1">Читаю и слушаю</p>
+                            <p class="text-center m-0 flex-grow-0" style="font-size: 12px;">20</p>
+                        </a>
+                        <a href="#" class="container mb-1 container-custom-none-active d-flex align-items-center p-1 text-decoration-none">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static 'gif/star-animated.gif' %}" width="20px" style="margin-right: 8px;">
+                            </div>
+                            <p class="text-center m-0 flex-grow-1">В планах</p>
+                            <p class="text-center m-0 flex-grow-0" style="font-size: 12px;">20</p>
+                        </a>
+                        <a href="#" class="container mb-1 container-custom-none-active d-flex align-items-center p-1 text-decoration-none">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static 'gif/refresh-animated.gif' %}" width="20px" style="margin-right: 8px;">
+                            </div>
+                            <p class="text-center m-0 flex-grow-1">Брошено</p>
+                            <p class="text-center m-0 flex-grow-0" style="font-size: 12px;">20</p>
+                        </a>
+                        <a href="#" class="container mb-1 container-custom-none-active d-flex align-items-center p-1 text-decoration-none">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static 'gif/success-animated.gif' %}" width="20px" style="margin-right: 8px;">
+                            </div>
+                            <p class="text-center m-0 flex-grow-1">Прочитано</p>
+                            <p class="text-center m-0 flex-grow-0" style="font-size: 12px;">20</p>
+                        </a>
+                        <a href="#" class="container mb-1 container-custom-none-active d-flex align-items-center p-1 text-decoration-none">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static 'gif/heart-animated.gif' %}" width="20px" style="margin-right: 8px;background: transparent;">
+                            </div>
+                            <p class="text-center m-0 flex-grow-1">Любимое</p>
+                            <p class="text-center m-0 flex-grow-0" style="font-size: 12px;">20</p>
+                        </a>
+                        <hr class="w-90">
+                        <a href="#" class="container mb-2 container-custom-none-active d-flex align-items-center p-0 text-decoration-none">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static 'image/icon-edit.svg' %}" width="20px" class="me-2">
+                            </div>
+                            <p class="text-center m-0 flex-grow-1" style="font-size: 14px;">Редактировать вкладки</p>
+                        </a>
+                        <a href="#" class="container mb-2 container-custom-none-active d-flex align-items-center p-0 text-decoration-none">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static 'image/icon-clear.svg' %}" width="20px" class="me-2">
+                            </div>
+                            <p class="text-center m-0 flex-grow-1" style="font-size: 14px;">Очистить текущий каталог</p>
+                        </a>
+                        <hr class="w-90">
+                        <div class="container container-custom-none-active d-flex align-items-center p-0 text-decoration-none">
+                            <div class="row justify-content-center align-items-center">
+                                <p class="text-center m-0 flex-grow-1 mb-1" style="font-size: 14px;">Вид</p>
+                                <a href="#" class="text-start m-0 flex-grow-1 justify-content-center" style="display: flex; align-items: center;">
+                                  <img src="{% static 'image/icon-list.png' %}" width="15px" style="margin-right: 5px;"> Список
+                                </a>
+                                <a href="#" class="text-start m-0 flex-grow-1 justify-content-center text-muted" style="display: flex; align-items: center;">
+                                  <img src="{% static 'image/icon-tiles.png' %}" width="15px" style="margin-right: 5px;"> Плитка
+                                </a>
+                              </div>
+                        </div>
+                        <hr class="w-90">
+                        <div class="container container-custom-none-active d-flex align-items-center p-0 text-decoration-none">
+                            <div class="row justify-content-center align-items-center">
+                                <p class="text-center m-0 flex-grow-1" style="font-size: 14px;">Сортировка</p>
+                            </div>
+                        </div>
+                        <hr class="w-90">
+                        <div class="container mb-3 container-custom-none-active d-flex align-items-center p-0 text-decoration-none">
+                            <div class="row justify-content-center align-items-center">
+                                <p class="text-center m-0 flex-grow-1" style="font-size: 14px;">Настройки</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9 justify-content-start align-content-start">
+                    <div class="mt-2">
+                        <div class="input-container">
+                            <input class="form-control w-100 p-1" placeholder="" onfocus="hidePlaceholder()" onblur="showPlaceholder()">
+                            <div class="placeholder" id="inputPlaceholder">Введите название книги</div>
+                        </div>
+                    </div>
+                    <!-- Tool Section -->
+                    <div class="row d-flex flex-row justify-content-end text-end mt-1">
+                        <div class="col">
+                            <a href="#" class="text-muted">Множественное редактирование</a>
+                        </div>
+                    </div>
+
+                    <!-- BookCards Section -->
+                    <div class="row d-flex flex-row justify-content-center text-center mt-1 mb-2">
+                        <div class="col">
+                            <!-- BookCards Place -->
+                            <div class="book-card-place">
+                                <!-- BookCard -->
+                                <div class="book-card shadow-sm mb-2">
+                                    <div class="container">
+                                        <div class="row justify-content-center align-items-center p-0">
+                                            <div class="col">
+                                                <div class="col d-flex align-content-start text-start mt-2 mb-2 p-0">
+                                                    <img src="{% static 'image/4.jpg' %}" width="60px" height="85px" class="shadow-sm rounded">
+                                                    <div class="mt-1 mx-2">
+                                                        <a href="#" class="h6 fw-bolder">Алхимик. Путь провидца. Даник дурак</a>
+                                                        <br>
+                                                        <span class="text-muted" style="font-size: 13px;"><a href="#">Василий Маханенко</a>, <a href="#">Ярослав Ягненков</a>, <a href="#">Петр Дубровский</a>, <a href="#">Василий Арбузин</a></span>
+                                                        <br>
+                                                        <a href="#" class="fw-bolder" style="font-size: 13px;">Последняя глава 54</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-5">
+                                                <div class="row">
+                                                    <span class="text-muted" style="font-size: 13px;">Добавлено</span>
+                                                    <span class="" style="font-size: 13px;">27.09.2022</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-1">
+                                                <a href="#" class="fw-bold" style="font-size: 20px;">•••</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- BookCard -->
+                                <div class="book-card shadow-sm mb-2">
+                                    <div class="container">
+                                        <div class="row justify-content-center align-items-center p-0">
+                                            <div class="col">
+                                                <div class="col d-flex align-content-start text-start mt-2 mb-2 p-0">
+                                                    <img src="{% static 'image/4.jpg' %}" width="60px" height="85px" class="shadow-sm rounded">
+                                                    <div class="mt-1 mx-2">
+                                                        <a href="#" class="h6"><strong>Алхимик. Путь провидца. Даник дурак</strong></a>
+                                                        <br>
+                                                        <span class="text-muted" style="font-size: 13px;"><a href="#">Василий Маханенко</a>, <a href="#">Ярослав Ягненков</a>, <a href="#">Петр Дубровский</a>, <a href="#">Василий Арбузин</a></span>
+                                                        <br>
+                                                        <a href="#" class="fw-bolder" style="font-size: 13px;">Последняя глава 54</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-5">
+                                                <div class="row">
+                                                    <span class="text-muted" style="font-size: 13px;">Добавлено</span>
+                                                    <span class="" style="font-size: 13px;">27.09.2022</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-1">
+                                                <a href="#" class="fw-bold" style="font-size: 20px;">•••</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- BookCard -->
+                                <div class="book-card shadow-sm mb-2">
+                                    <div class="container">
+                                        <div class="row justify-content-center align-items-center p-0">
+                                            <div class="col">
+                                                <div class="col d-flex align-content-start text-start mt-2 mb-2 p-0">
+                                                    <img src="{% static 'image/4.jpg' %}" width="60px" height="85px" class="shadow-sm rounded">
+                                                    <div class="mt-1 mx-2">
+                                                        <a href="#" class="h6"><strong>Алхимик. Путь провидца. Даник дурак</strong></a>
+                                                        <br>
+                                                        <span class="text-muted" style="font-size: 13px;"><a href="#">Василий Маханенко</a>, <a href="#">Ярослав Ягненков</a>, <a href="#">Петр Дубровский</a>, <a href="#">Василий Арбузин</a></span>
+                                                        <br>
+                                                        <a href="#" class="fw-bolder" style="font-size: 13px;">Последняя глава 54</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-5">
+                                                <div class="row">
+                                                    <span class="text-muted" style="font-size: 13px;">Добавлено</span>
+                                                    <span class="" style="font-size: 13px;">27.09.2022</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-1">
+                                                <a href="#" class="fw-bold" style="font-size: 20px;">•••</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal | Info About User -->
+    <div class="modal fade" id="modal-detail-info-user" tabindex="-1" aria-labelledby="modalwithInfoUser" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Unknow Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    Unknow Body
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'js/support-functions.js' %}"></script>
+    <script src="{% static 'js/main-profile.js' %}"></script>
+{% endblock scripts %}
