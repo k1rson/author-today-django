@@ -73,7 +73,8 @@ def registration_user(request) -> JsonResponse:
     password = request.POST.get('password')
     email = request.POST.get('email') 
 
-    user = User.objects.create_user(username=username, password=password, email=email, exp=0, lvl=1, role=1)
+    user = User.objects.create_user(username=username, password=password, email=email,
+        exp_reader=0, exp_writer=0, lvl_reader=1, lvl_writer=1, role=1)
 
     if user is not None: 
         login(request, user)

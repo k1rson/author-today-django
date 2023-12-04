@@ -38,7 +38,6 @@ function OpenModalNotCompletedElement() {
 function CreateDashboardCard(){
     let dashboard_card = $('#dashboardCard');
 
-    
 }
 
 function CreateBookPanels(popular_books, new_hot_books, updated_books, bestseller_books, last_check_books, new_books, popular_now_books, most_likes_books) {

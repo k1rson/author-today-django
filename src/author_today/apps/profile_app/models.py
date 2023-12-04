@@ -61,8 +61,8 @@ class User(AbstractUser):
 
     avatar = models.ImageField('Аватар', upload_to='avatars/', blank=True, null=True)
     user_background_image = models.ImageField('Задний фон профиля', upload_to='user_background_images/', blank=True, null=True)
-    exp_reader = models.IntegerField('Опыт читателя')
-    exp_writer = models.IntegerField('Опыт писателя')
+    exp_reader = models.IntegerField('Опыт читателя', default=1)
+    exp_writer = models.IntegerField('Опыт писателя', default=1)
     lvl_reader = models.IntegerField('Уровень читателя', choices=LEVELS_READER_CHOICES)
     lvl_writer = models.IntegerField('Уровень писателя', choices=LEVELS_WRITER_CHOICES)
     role = models.IntegerField('Роль', choices=ROLE_CHOICES)

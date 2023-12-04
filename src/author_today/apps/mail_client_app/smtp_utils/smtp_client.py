@@ -15,6 +15,9 @@ class SMTPServer:
         try:
             self.smtp_connection = smtplib.SMTP_SSL(settings.SMTP_SERVER, settings.SMTP_PORT)
             self.smtp_connection.login(settings.SMTP_USERNAME, settings.SMTP_PASSWORD)
+            print(self.smtp_connection)
+            print(self.smtp_connection)
+
             return True
         except Exception as e:
             return False
